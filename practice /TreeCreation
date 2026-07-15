@@ -1,0 +1,43 @@
+import java.util.*;
+ class Node{
+ int val;
+ Node left;
+ Node right;
+ Node(int val){
+  this.val=val;
+  left=right=null;
+ }
+}
+public class Main {
+	public static Node insert(Node root,int val){
+		if(root==null){
+			root= new Node(val);
+		}
+		else if(root.val>val){
+			root.left=insert(root.left,val);
+		}
+		else{
+			root.right=insert(root.right,val);
+		}
+		return root;
+		
+	}
+    public static void main(String[] args) {
+      Scanner sc=new Scanner(System.in);
+      Node head=null;
+      
+      while(true){
+      	int n=sc.nextInt();
+      	if(n==-1){
+      		break;
+      	}
+      	head=insert(head,n);
+      }
+      Node root=head;
+      while(root!=null)
+      {
+      	System.out.print(root.val+" ");
+      	root=root.right;
+      }
+    }
+}
